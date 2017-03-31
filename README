@@ -1,0 +1,9 @@
+Continuum Small Talks materials
+-------------------------------
+
+Running slides
+
+  $ git clone https://github.com/grsmv/continuum-small-talks.git
+  $ cd continuum-small-talks
+  $ go get golang.org/x/tools/cmd/present
+  $ present

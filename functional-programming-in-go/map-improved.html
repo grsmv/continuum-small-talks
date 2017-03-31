@@ -1,0 +1,38 @@
+<br>
+<small>
+    Let's use <i>go-func</i> package (<a href="https://github.com/benashford/go-func">github.com/benashford/go-func</a>) just as a example of <br>
+    type-agnostic realisation of <code>map</code> and <code>filter</code>
+</small>
+<table>
+    <tr>
+        <td style="border: 0">
+            <img src="./images/map.png" alt="">
+        </td>
+        <td style="border: 0">
+            <pre style="font-family: Monaco, monospace; font-size: .6em; line-height: 1.3em">
+// map:
+func stringLength(s string) int {
+	return len(s)
+}
+
+func doMap() {
+    a := []string{"a", "bee", "sea", "dee", "eff", "gee", "aitch"}
+    b := Maps(a, stringLength).([]int)
+    fmt.Println(b)
+}
+
+// filter:
+func isEven(a int) bool {
+	return a % 2 == 0
+}
+
+func doFilter(){
+    a := []int{1, 2, 3, 4, 5}
+    b := Filters(a, isEven).([]int)
+    fmt.Println(b)
+}
+
+            </pre>
+        </td>
+    </tr>
+</table>

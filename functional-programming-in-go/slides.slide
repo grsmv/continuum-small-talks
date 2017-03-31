@@ -1,0 +1,100 @@
+Functional Programming in Go
+
+Serhii Herasymov
+SoftServe
+sgeras@softserveinc.com
+
+* Concepts of Functional Programming
+
+.html concepts_of_functional_programming.html
+
+
+* goo.gl/YyT9C3
+
+.background ./images/ladder_header.png
+
+* Why Go is not functional?
+
+"a language that is not a breakthrough research language but is nonetheless an
+excellent tool for engineering large software projects [...]"
+
+"Programmers working at Google are early in their careers and are most
+familiar with procedural languages, particularly from the C family. The need
+to get programmers productive quickly in a new language means that the
+language cannot be too radical" 
+
+by Rob Pike
+.link https://talks.golang.org/2012/splash.article https://talks.golang.org/2012/splash.article
+
+* What we can not use ('cause it's senseless)
+
+.html what_we_cant_use.html
+
+* What can use with restrictions
+
+.html use_with_restrictions.html
+
+* What we can use
+
+* Referential Transparency
+
+.html referential-transparency.html
+
+* Referential Transparency
+
+Don't update, create:
+
+    // don't:
+    name := "Igor"
+    name  = name + " Stravinsky"
+
+    // do:
+    const firstName  = "Igor"
+    const secondName = "Stravinsky"
+    const greatestComposer = firstName + " " + secondName
+
+    // arrays
+
+    // don't:
+    viennSchool := [4]string{"Schoenberg", "Berg", "Webern"}
+    vienSchool[3] = "Handemith"
+
+    // do:
+    viennSchool := [3]string{"Schoenberg", "Berg", "Webern"}
+    newViennSchool := append(viennSchool, "Handemith")
+
+* High Order Functions
+
+Go supports first class functions, higher-order functions, user-defined function types, function literals, closures, and multiple return values.
+
+This rich feature set supports a functional programming style in a strongly typed language.
+
+* High Order Functions - Curried Functions
+
+.html curried-functions.html
+
+* High Order Functions - Map and Filter
+
+.html map.html
+
+* High Order Functions - Map and Filter - improved
+
+.html map-improved.html
+
+* High Order Functions - Reduce
+
+.html reduce.html
+
+* Outcomes:
+
+Functional programming is extravagant and exotic, but possible and helpful.
+But anyway, learn at least one functional programming language - you definitely
+will be a better developer and (hopefully) better human being :)
+
+Here's plethora of them:
+- Haskell
+- ML (Ocaml, Standard ML)
+- Erlang
+- Scala
+- Closure
+- F#

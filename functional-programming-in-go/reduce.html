@@ -1,0 +1,27 @@
+<br>
+<small>
+    Let's stuck with <b>reduce</b> term, instead of <b>fold</b>. Once again, using <i>go-func</i> package.
+</small>
+<table>
+    <tr>
+        <td style="border: 0">
+            <img src="./images/reduce.png" alt="">
+        </td>
+        <td style="border: 0">
+            <pre style="font-family: Monaco, monospace">
+// reduce:
+
+func add(a, b int) int {
+	return a + b
+}
+
+func doReduce() {
+    a := []int{1, 1, 2, 3, 5, 8}
+    b := Reduce(a, add).(int)
+    fmt.Println(b) // 20
+}
+
+            </pre>
+        </td>
+    </tr>
+</table>

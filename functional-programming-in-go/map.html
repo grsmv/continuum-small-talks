@@ -1,0 +1,36 @@
+<br><small><small>Mapping and filtering is the bread and butter of every functional programmer's toolbox. You make a function that takes
+a value and produces some result (<b>map</b>). We map that function over a list of values and then we filter the resulting list out
+for the results that satisfy our search.
+</small></small>
+<table>
+    <tr>
+        <td style="border: 0">
+            <img src="./images/map.png" alt="">
+        </td>
+        <td style="border: 0">
+            <pre style="font-family: Monaco, monospace; font-size: .6em; line-height: 1.3em">
+// Returns a new slice containing all strings in the slice that satisfy the predicate f.
+func Filter(vs []string, f func(string) bool) []string {
+    vsf := make([]string, 0)
+    for _, v := range vs {
+        if f(v) {
+            vsf = append(vsf, v)
+        }
+    }
+    return vsf
+}
+
+// Returns a new slice containing the results of applying the function f
+// to each string in the original slice.
+func Map(vs []string, f func(string) string) []string {
+    vsm := make([]string, len(vs))
+    for i, v := range vs {
+        vsm[i] = f(v)
+    }
+    return vsm
+}
+
+            </pre>
+        </td>
+    </tr>
+</table>

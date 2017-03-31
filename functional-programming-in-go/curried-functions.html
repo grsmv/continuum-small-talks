@@ -1,0 +1,40 @@
+<table>
+    <tr>
+        <td style="border: 0">
+            <img src="./images/curry.png" alt="">
+        </td>
+        <td style="border: 0">
+            <pre style="font-family: Monaco, monospace; font-size: .6em; line-height: 1.3em">
+package main
+import "fmt"
+
+func curriedMapper(operator func(interface{}) interface{}) func(interface{}) interface{} {
+    return func(m interface{}) (result interface{}) {
+        switch m.(type) {
+        case []int:
+            result := m.([]int)
+            for i, n := range result {
+                result[i] = operator(n).(int)
+            }
+            return result
+        }
+        return result
+    }
+}
+
+func main() {
+    square := func(value interface{}) interface{} {
+        switch value.(type) {
+        case int:
+            return value.(int) * value.(int)
+        }
+        return nil
+    }
+    squaring := curriedMapper(square)
+    fmt.Println(squaring([]int{1, 2, 3}))
+}
+
+            </pre>
+        </td>
+    </tr>
+</table>
