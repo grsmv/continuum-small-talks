@@ -1,0 +1,70 @@
+Plugins
+
+Serhii Herasymov
+SoftServe
+sgeras@softserveinc.com
+
+* New in 1.8
+
+- HTTP server connection draining
+- HTTP/2.0 server push via http.Pusher
+- Changes in database/sql package
+- New slice sorting API
+- Dynamic plugins via new package plugin
+
+* Value
+
+- Modularization
+- Dynamic code loading
+- Code decoupling
+- Encapsulation
+
+* Caveats
+
+- New plugin build mode is currently only supported on Linux
+- Minor issues with debugging
+
+* plugin package internals
+
+
+    // Plugin type reflects loaded Go plugin.
+    type Plugin
+
+        // Open opens a Go plugin. If a path has already been opened, then the existing
+        // *Plugin is returned. It is safe for concurrent use by multiple goroutines.
+        func Open(path string) (*Plugin, error)
+
+        // Lookup searches for a symbol named symName in plugin p. A symbol is any exported
+        // variable or function. It reports an error if the symbol is not found. It is safe
+        // for concurrent use by multiple goroutines.
+        func (p *Plugin) Lookup(symName string) (Symbol, error)
+
+    // A Symbol is a pointer to a variable or function.
+    type Symbol
+
+* Simplest plugin
+
+    // plugin.go
+    package main
+
+    func Add(x, y int) int {
+        return x+y
+    }
+
+Let's build it:
+
+    $ go build -buildmode=plugin -o plugin.so plugin.go
+
+Consuming plugin:
+
+    package main
+    import "plugin"
+
+    func main() {
+    	p, _   := plugin.Open("./plugin.so")
+    	add, _ := p.Lookup("Add")
+    	sum    := add.(func(int, int) int)(1, 2)
+    	println(sum)
+    }
+
+* https://github.com/grsmv/go-plugin-example
